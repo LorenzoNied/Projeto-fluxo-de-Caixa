@@ -1,12 +1,11 @@
 programa {
-  cadeia descricoes[1000]
-  cadeia data[1000]
-  cadeia horas[1000]
-  real valor[1000]
+  cadeia descricoes[100]
+  cadeia data[100]
+  cadeia horas[100]
+  real valor[100]
   inteiro contador = 0
 
   funcao inicio() {
-<<<<<<< HEAD
     montarMenu()
   }
   funcao montarMenu (){
@@ -23,39 +22,24 @@ programa {
     leia(opcao)
 
     escolha(opcao){
-      caso(1):
-        //colcoar funcao adicionar reiceta
-      pare
-      caso(2):
-        //colocar adicionar despesa
-      pare
-      caso(3):
+      caso 1:
+        requisitarReceita()
+        pare
+      caso 2:
+        adicionarDespesa()
+        pare
+      caso 3:
         //colocar lista de fluxo
-      pare
-      caso(4):
-        //colocar saldo
-      pare
+        pare
+      caso 4:
+        saldoAtual ()
+        pare
       caso contrario: 
         opcao = 0
     }
     } enquanto (opcao != 0)
   }
-}
 
-/* $$$ Portugol Studio $$$ 
- * 
- * Esta seção do arquivo guarda informações do Portugol Studio.
- * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 703; 
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
- */
-=======
-    requisitarReceita()
-  }
   funcao requisitarReceita(){
     cadeia descricoesTransacao, dataTransacao, horasTransacao
     real valorTransacao
@@ -78,6 +62,34 @@ programa {
     valor[contador] = valorTransacao
     data[contador] = dataTransacao
     horas[contador] = horasTransacao
+    contador++
+  }
+  funcao adicionarDespesa(){
+    cadeia descricoesTransacao, dataTransacao, horasTransacao, tipoNegativo
+    real valorTransacao
+
+    escreva("Digite a descrição da transferência: \n Descrição: ")
+    leia(descricoesTransacao)
+
+    faca{
+      escreva("Digite o valor da retirada: \n R$: ")
+      leia(valorTransacao)
+    } enquanto (valorTransacao>=0)
+
+    escreva("Digite a Data e Hora da transferência: \n Data: ")
+    leia(dataTransacao)
+    escreva(" Hora: ")
+    leia(horasTransacao)
+
+    adicionarReceita(descricoesTransacao, valorTransacao, dataTransacao, horasTransacao)
+  }
+  funcao saldoAtual (){
+    real saldo = 0
+
+    para(inteiro i = 0; i<contador; i++){
+      saldo += valor[i]
+    }
+    escreva("Saldo:\nR$",saldo, "\n")
   }
 }
->>>>>>> feature/002
+
